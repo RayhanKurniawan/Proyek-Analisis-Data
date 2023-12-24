@@ -3,14 +3,14 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Streamlit page configuration - must be the first command
+# Streamlit page configuration
 st.set_page_config(page_title='Air Quality Analysis Dashboard', layout='wide')
 
-# Function to load data with the new caching command
+# load data
 @st.cache_data
 def load_data():
-    data = pd.read_csv('AirQuality_datahari.csv')
-    data['tanggal'] = pd.to_datetime(data['tanggal'])  # Ensure 'tanggal' is datetime
+    data = pd.read_csv('https://raw.githubusercontent.com/RayhanKurniawan/Proyek-Analisis-Data/main/Dashboard/AirQuality_datahari.csv')
+    data['tanggal'] = pd.to_datetime(data['tanggal'])
     return data
 
 # Load the data
@@ -39,7 +39,7 @@ ax.set_title('Tingkat Kualitas Udara Seiring Waktu')
 ax.legend()
 
 st.pyplot(fig)
-datacorr= datapilih.drop(columns= 'Kategori_Udara')
+datacorr= datapilih[['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3', 'TEMP', 'DEWP', 'WSPM', 'AQI']]
 # Correlation Matrix Heatmap
 st.subheader('Hubungan Indikator lain terhadap Polusi Udara')
 correlation_matrix = datacorr.corr()
