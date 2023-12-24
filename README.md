@@ -1,10 +1,10 @@
 # Dicoding Studi Kasus Analisis Data ✨
 
 ## Setup environment
-```
-conda create --name main-ds python=3.9
-conda activate main-ds
-pip install numpy pandas scipy matplotlib seaborn jupyter streamlit
+Buat lingkungan virtual Python:
+   ```bash
+   python -m venv myenv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 ## Run steamlit app
